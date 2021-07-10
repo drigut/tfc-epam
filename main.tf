@@ -1,28 +1,23 @@
-provider "aws" {
-  region = var.region
+# We strongly recommend using the required_providers block to set the
+# Azure Provider source and version being used
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=2.46.0"
+    }
+  }
 }
 
-data "aws_ami" "ubuntu" {
-  most_recent = true
+# Configure the Microsoft Azure Provider
+provider "azurerm" {
+  features {}
 
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["099720109477"] # Canonical
+  subscription_id = "0cd1082d-505a-46d9-976d-2c8db2796bc3"
 }
 
-resource "aws_instance" "ubuntu" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = var.instance_type
-
-  tags = {
-    Name = var.instance_name
-  }
+# Create a resource group
+resource "azurerm_resource_group" "varkhipov_rg" {
+  name     = "varkhipov_rg"
+  location = "West Europe"
 }
