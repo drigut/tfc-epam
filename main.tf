@@ -28,7 +28,7 @@ resource "azurerm_resource_group" "varkhipovazurepgsqlrg" {
 resource "azurerm_postgresql_server" "varkhipovazurepgsqlsrv" {
   name                = "varkhipovazurepgsqlsrv"
   location            = var.location
-  resource_group_name = varkhipovazurepgsqlrg
+  resource_group_name = "varkhipovazurepgsqlrg"
 
   administrator_login          = "varkhipov"
   administrator_login_password = "H@Sh1CoR3!"
