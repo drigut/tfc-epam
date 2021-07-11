@@ -19,18 +19,18 @@ provider "azurerm" {
 
 }
 
-# Create a resource group "varkhipovazurepgsqlrg"
-resource "azurerm_resource_group" "varkhipovazurepgsqlrg" {
-  name     = "varkhipovazurepgsqlrg"
+# Create a resource group "badhqresgrp"
+resource "azurerm_resource_group" "badhqresgrp" {
+  name     = "badhqresgrp"
   location = var.location
 }
 # Create postgresql server
-resource "azurerm_postgresql_server" "varkhipovazurepgsqlsrv" {
-  name                = "varkhipovazurepgsqlsrv"
+resource "azurerm_postgresql_server" "badhqresdb" {
+  name                = "badhqresdb"
   location            = var.location
-  resource_group_name = "varkhipovazurepgsqlrg"
+  resource_group_name = "badhqresgrp"
 
-  administrator_login          = "varkhipov"
+  administrator_login          = "badmadjack"
   administrator_login_password = "H@Sh1CoR3!"
 
   sku_name   = "B_Gen5_1"
