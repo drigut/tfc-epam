@@ -12,12 +12,15 @@ terraform {
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}
+  subscription_id = var.subscription_id
+  client_id = var.client_id
+  client_secret = var.client_secret
+  tenant_id = var.tenant_id
 
-  subscription_id = "0cd1082d-505a-46d9-976d-2c8db2796bc3"
 }
 
-# Create a resource group
-resource "azurerm_resource_group" "varkhipov_rg" {
-  name     = "varkhipov_rg"
-  location = "West Europe"
+# Create a resource group "varkhipovazurepgsqlrg"
+resource "azurerm_resource_group" "varkhipovazurepgsqlrg" {
+  name     = "varkhipovazurepgsqlrg"
+  location = var.location
 }
