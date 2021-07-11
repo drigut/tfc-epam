@@ -33,7 +33,7 @@ resource "azurerm_postgresql_server" "varkhipovazurepgsqlsrv" {
   administrator_login          = "varkhipov"
   administrator_login_password = "H@Sh1CoR3!"
 
-  sku_name   = "GP_Gen5_4"
+  sku_name   = "B_Gen5_1"
   version    = "9.6"
   storage_mb = 5120
 
