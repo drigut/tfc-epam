@@ -24,3 +24,24 @@ resource "azurerm_resource_group" "varkhipovazurepgsqlrg" {
   name     = "varkhipovazurepgsqlrg"
   location = var.location
 }
+# Create postgresql server
+resource "azurerm_postgresql_server" "varkhipovazurepgsqlsrv" {
+  name                = "varkhipovazurepgsqlsrv"
+  location            = var.location
+  resource_group_name = varkhipovazurepgsqlrg
+
+  administrator_login          = "varkhipov"
+  administrator_login_password = "H@Sh1CoR3!"
+
+  sku_name   = "GP_Gen5_4"
+  version    = "9.6"
+  storage_mb = 5120
+
+  backup_retention_days        = 7
+  geo_redundant_backup_enabled = false
+  auto_grow_enabled            = true
+
+  public_network_access_enabled    = true
+  ssl_enforcement_enabled          = true
+  ssl_minimal_tls_version_enforced = "TLS1_2"
+}
